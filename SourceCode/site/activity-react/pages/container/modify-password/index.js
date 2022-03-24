@@ -2,7 +2,7 @@ import * as React from 'react';
 import './style.scss'
 import Page from '../../../components/page'
 import api from '../../../utils/api';
-const sha256 = require('crypto-js/SHA256');
+const sha256 = require('crypto-js/sha256');
 
 
 export default class ModidyPassword extends React.Component{
@@ -14,9 +14,9 @@ export default class ModidyPassword extends React.Component{
     componentDidMount = async() => {
         const result = await api('/api/getMyInfo', {
             method: 'POST',
-            body: {}    
+            body: {}
         })
-        
+
         this.setState({
             username:result.data.userObj.username
         })
@@ -38,7 +38,7 @@ export default class ModidyPassword extends React.Component{
             window.toast('请输入当前密码')
         } else if(!this.state.newPwd) {
             window.toast('请输入新密码')
-        } 
+        }
         const oldPassword = sha256(this.state.currentPwd).toString()
         const newPassword = sha256(this.state.newPwd).toString()
         const result =  await api('/api/modifyPassword',{
@@ -49,7 +49,7 @@ export default class ModidyPassword extends React.Component{
                 newPassword:newPassword
             }
         })
-      
+
         if(result.state.code === 0){
             window.toast(result.state.msg)
             location.href = './team'
@@ -58,24 +58,24 @@ export default class ModidyPassword extends React.Component{
             return
         }
     }
-    
- 
-    
+
+
+
     render() {
         return (
-            <Page title="修改密码" className="modify-password">  
-            <div className="page-wrap">  
-                <h2>修改密码</h2>      
-                <br/>       
+            <Page title="修改密码" className="modify-password">
+            <div className="page-wrap">
+                <h2>修改密码</h2>
+                <br/>
                 <div className="edit-con">
                 <div className="before">当前密码</div>
-                <input type="password" className="input-edit" 
+                <input type="password" className="input-edit"
                     onChange={this.currentPwdHandle} value={this.state.currentPwd} autoFocus
                 />
             </div>
             <div className="edit-con">
                 <div className="before">新密码</div>
-                <input type="password" className="input-edit" 
+                <input type="password" className="input-edit"
                     onChange={this.newPwdHandle} value={this.state.newPwd}
                 />
             </div>
