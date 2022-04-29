@@ -31,9 +31,9 @@ var subscribeEventHandle = async (openid) => {
             if(userObj) {
                 await UserDB.updateUser(userObj._id, {
                     openid: wxUserInfo.openid,
-                })          
-            } 
-            pub_pushTemplateMsg(openid, 'YH-TY6g0sbVJgC5Ppk-cBDvLlFCfQxRm61QKj7IOSV4', 'www.animita.cn', {
+                })
+            }
+            pub_pushTemplateMsg(openid, 'YH-TY6g0sbVJgC5Ppk-cBDvLlFCfQxRm61QKj7IOSV4', 'ihci.animita.cn', {
                 "first": {
                     "value": "关注服务号成功，您已注册平台",
                 },
@@ -60,8 +60,8 @@ var unsubscribeEventHandle = async (openid) => {
     if(userObj) {
        await UserDB.updateUser(userObj._id, {
             openid: '',
-        })      
-    } 
+        })
+    }
 }
 
 var wxReceiver = function(req, res, next) {
@@ -98,7 +98,7 @@ var wxReceiver = function(req, res, next) {
     //       createtime: [ '1526454558' ],
     //       msgtype: [ 'event' ],
     //       event: [ 'subscribe' ],
-    //       eventkey: [ '' ] } } 
+    //       eventkey: [ '' ] } }
 
     const event = req.body.xml && req.body.xml.event
 
@@ -128,6 +128,6 @@ module.exports = [
     ['POST', '/wxReceiver', wxReceiver],
 
     // ['POST', '/api/update-head-img' , updateHeadImgUrl],
-    
+
     // ['POST', '/api/update-head-img' ,apiAuth, updateUserInfo],
 ];
