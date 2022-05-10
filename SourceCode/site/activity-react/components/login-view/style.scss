@@ -1,6 +1,6 @@
 
         .auth-con {
-            
+
             width: 410px;
             height:323px;
             right:15%;
@@ -26,7 +26,7 @@
                 height: 38px;
                 transform:scaleY(0.9);
                 font-size:41px;
-                
+
                 &:hover {
                     background-color: #f2f2f2;
                 }
@@ -61,12 +61,12 @@
             }
         }
         .login-view-form {
-            
+
             padding: 10px;
             background-color: #fffaf2;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
-            
+
             .auth-desc {
                 font-size: 27px;
                 font-weight: normal;
@@ -104,9 +104,9 @@
                 height: 50px;
                 padding: 6px 0;
                 cursor: pointer;
-                font-weight: bold; 
+                font-weight: bold;
             }
-            
+
             .countSecond {
                 width: 130px;
                 background-color: gray;
@@ -114,11 +114,11 @@
                 color: #fff;
                 height: 50px;
                 padding: 6px 0;
-                font-weight: bold; 
+                font-weight: bold;
             }
 
             .auth-input {
-                outline: 0; 
+                outline: 0;
                 border: 2px solid #545454;
                 border-radius: 5px;
                 height: 52px;
@@ -126,10 +126,48 @@
                 background-color: #fffaf2;
                 padding: 0 20px;
                 margin-bottom: 10px;
+            }
 
+            .input-box {
+                position: relative;
+                height: 52px;
+                width: 460px;
+                margin-bottom: 10px;
+
+                .auth-input {
+                    height: 100%;
+                    width: 400px;
+                    border: 2px solid #545454;
+                    border-radius: 5px;
+                    outline: 0;
+                    background-color: #fffaf2;
+                    padding: 0 20px;
+                }
+
+                .eye-close{
+                    position: absolute;
+                    top: 8px;
+                    right: 15px;
+                    width: 36px;
+                    height: 36px;
+                    background-image: url(./eye-close.png);
+                    background-size: 100% 100%;
+                    cursor: pointer;
+                }
+
+                .eye-open{
+                    position: absolute;
+                    top: 8px;
+                    right: 15px;
+                    width: 36px;
+                    height: 36px;
+                    background-image: url(./eye-open.png);
+                    background-size: 100% 100%;
+                    cursor: pointer;
+                }
             }
             // .auth-input {
-            //     outline: 0; 
+            //     outline: 0;
             //     border: 1px solid #acacac;
             //     border-radius: 5px;
             //     height: 60px;
@@ -137,7 +175,7 @@
             //     font-size: 25px;
             //     padding: 0 20px;
             //     margin-bottom: 20px;
-    
+
             //     &:focus {
             //         border: 1px solid #a2a2a2;
             //     }
@@ -229,7 +267,7 @@
                 }
             }
         }
-    
+
 @media (max-width: 600px) {
     .auth-con {
         width: 90%;
@@ -255,7 +293,7 @@
                 justify-content: left;
                 height: 50px;
                 font-size:42px;
-                
+
                 &:hover {
                     background-color: #fff;
                 }
@@ -294,14 +332,14 @@
             background-color: #fff;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
-            
+
             .auth-desc {
                 font-size: 30px;
                 font-weight: normal;
                 margin-bottom: 12px;
                 color: #4D4D4D;
             }
-    
+
             .forgetPwd{
                 color: gray;
                 cursor: pointer;
@@ -310,7 +348,7 @@
                 width:100%;
                 display: block;
             }
-    
+
             .auth-smallinput {
                 width: 50%;
                 margin-right: 10px;
@@ -321,7 +359,7 @@
                 padding: 0 20px;
                 margin-bottom: 20px;
             }
-    
+
             .codeBtn {
                 width: 130px;
                 background-color: #ffb43d;
@@ -330,9 +368,9 @@
                 height: 50px;
                 padding: 6px 0;
                 cursor: pointer;
-                font-weight: bold; 
+                font-weight: bold;
             }
-            
+
             .countSecond {
                 width: 130px;
                 background-color: gray;
@@ -340,11 +378,11 @@
                 color: #fff;
                 height: 50px;
                 padding: 6px 0;
-                font-weight: bold; 
+                font-weight: bold;
             }
-    
+
             .auth-input {
-                outline: 0; 
+                outline: 0;
                 border: 1px solid #acacac;
                 border-radius: 5px;
                 height: 60px;
@@ -352,7 +390,7 @@
                 font-size: 25px;
                 padding: 0 20px;
                 margin-bottom: 20px;
-    
+
                 &:focus {
                     border: 1px solid #a2a2a2;
                 }
@@ -370,7 +408,7 @@
                 font-weight: normal;
                 color: #fff;
                 border-radius: 5px;
-    
+
                 &:hover {
                     box-shadow: 1px 2px 6px #a2a2a2;
                 }

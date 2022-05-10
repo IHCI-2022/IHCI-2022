@@ -27,7 +27,8 @@ export class LoginView extends React.Component {
             passwordEmpty: true,
             createNicknameEmpty: true
         },
-        helpDisplay: false
+        helpDisplay: false,
+        passwdShow: false
     }
 
     setToSignUpHandle = () => {
@@ -222,6 +223,8 @@ export class LoginView extends React.Component {
 
     }
 
+
+
     render() {
         return <div className="auth-con">
             <div className="auth-nav">
@@ -241,8 +244,12 @@ export class LoginView extends React.Component {
                             onClick={this.judgeUsernameEmptyHandle} autoFocus></input>
                         <input type='text' className='auth-input' placeholder='请输入昵称'
                             vlaue={this.state.createNickname} onChange={this.createNicknameHandle}></input>
-                        <input className="auth-input" placeholder="请输入密码"
-                            type="password" value={this.state.createPassword} onChange={this.createPasswordHandle}></input>
+                        <div className='input-box'>
+                            <input className="auth-input" placeholder="请输入密码"
+                                type={(this.state.passwdShow)?'text':'password'} value={this.state.createPassword} onChange={this.createPasswordHandle}>
+                            </input>
+                            <div className={(this.state.passwdShow)?'eye-open':'eye-close'} onClick={()=>{this.setState({passwdShow:!this.state.passwdShow})}}></div>
+                        </div>
                         <SMSBlock smsCodeInputHandle={this.smsCodeInputHandle}
                             smsCode={this.state.authCode}
                             phoneNumber={this.state.createPhone}
