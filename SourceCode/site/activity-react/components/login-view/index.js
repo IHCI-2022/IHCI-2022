@@ -134,7 +134,7 @@ export class LoginView extends React.Component {
         if (confirmPassword) {
             createPasswordEmpty = false
         } else {
-            createPassworddEmpty = true
+            createPasswordEmpty = true
         }
         this.setState({
             createPassword: e.target.value,
@@ -239,7 +239,7 @@ export class LoginView extends React.Component {
                         <input type="number" pattern="[0-9]*" className="auth-input" placeholder="请输入手机号"
                             value={this.state.createPhone} onChange={this.createPhoneHandle}
                             onClick={this.judgeUsernameEmptyHandle} autoFocus></input>
-                        <input type='text' className='auth-input' placeholder='请输入昵称' 
+                        <input type='text' className='auth-input' placeholder='请输入昵称'
                             vlaue={this.state.createNickname} onChange={this.createNicknameHandle}></input>
                         <input className="auth-input" placeholder="请输入密码"
                             type="password" value={this.state.createPassword} onChange={this.createPasswordHandle}></input>
