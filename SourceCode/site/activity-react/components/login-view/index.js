@@ -220,7 +220,6 @@ export class LoginView extends React.Component {
                 authCodeEmpty: false
             }
         })
-
     }
 
 
