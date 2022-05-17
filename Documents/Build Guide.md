@@ -1,4 +1,4 @@
-# IHCI-Calender-Link
+# IHCI-Build-Guide
 *****
 ### 原IHCI平台(IHCI-RE项目)的项目结构：
 * api-doc：&emsp;关于user的api文档。
@@ -15,45 +15,45 @@
 * redis
 * docker
 *****
-### 原IHCI平台(IHCI-RE项目)的编译和部署：
+### 原IHCI平台(IHCI-RE项目)的打包和运行：
 <p>&emsp;由于本人并不是IHCI平台的作者，也没有拿到详细的部署文档，所以这里只是给出了我自己的部署情况。</p>
-###&emsp;1. 编译环境（前端）
-<p>&emsp;此部分非常重要，因为现在的IHCI-RE中仍有部分坑点，最好与下面相同的环境中编译。</p>
+###&emsp;1. 打包环境
+<p>&emsp;Node版本非常重要，不建议使用除8.9.0以外的版本，否则打包失败需要自行确认依赖包安装情况。</p>
+&emsp;Windows 10:
 <ul>
-    <li>OS: win10 Version: 1903</li>
-    <li>Node: v10.13.0以上</li>
-    <li>npm: v6.4.1以上</li>
-    <li>c++编译器：MSVC</li>
+    <li>OS: Windows 10 Version: 1903</li>
+    <li>Node: 8.9.0</li>
+    <li>npm: 5.5.1</li>
+    <li>IDE: vscode</li>
 </ul>
-<p>&emsp;由于原IHCI-RE项目中，给出的build.sh文件和run.sh文件使用的是Ubuntu/Debian系统的指令，因此容易会被人放到Ubuntu/Debian平台上去编译。但是，由于某种原因（本人也不知道），在npm编译的时候，会出现crypto-js文件读取失败的情况，导致编译失败。规避这个失败的方法就是使用windows系统进行编译。</p>
-
-### &emsp;2. 编译指令(windows下进行)
-<p>&emsp;此部分指令的默认目录均是在项目的根目录执行。</p>
+&emsp;CentOS 7
+<ul>
+    <li>OS: CentOS 7</li>
+    <li>Node: 8.9.0</li>
+    <li>npm: 5.5.1</li>
+</ul>
+&emsp;如果本地环境已有其他Node版本建议使用nvm进行Node版本切换以免影响其他Node项目。
+### &emsp;2. 构建项目
+<p>&emsp;此部分指令的默认目录均是在项目的Sourcecode执行。</p>
 ```
     npm install
     npm run build
+    gulp //如果未安装gulp先要运行 npm install -g gulp 安装gulp
 ```
-<p>&emsp;前端编译好的js文件会出现在public文件夹下的activity-react文件夹下。将其复制到Ubuntu该项目的public文件夹下即可。</p>
-
-### &emsp;3. 打包指令(ubuntu下进行)
-<p>&emsp;在打包之前，需要先安装gulp：</p>
-```
-    sudo npm install -g gulp
-```
-<p>&emsp;由于项目根目录下的已经存在gulpfile，所以这里直接gulp即可</p>
-```
-    gulp
-```
-<p>&emsp;静待打包完成。</p>
-<p>&emsp;打包完成后，dest文件夹的文件夹结构为：</p>
+&emsp;执行完上述指令后会在当前目录下生成一个dest文件夹，将当前目录的public复制到dest文件夹中即可完成构建。
+<p>&emsp;构建完成后，dest文件夹的文件夹结构为：</p>
+<ul>
 <li>public: &emsp;同根目录public文件夹
 <li>server: &emsp;同根目录server文件夹
 <li>site: &emsp;同根目录site文件夹
-
-### &emsp;4. 部署指令(ubuntu下进行)
-<p>该操作所在的文件夹在打包完成的dest中。</p>
+</ul>
+### &emsp;3. 运行项目
+<p>该操作所在的文件夹在构建完成的dest中。</p>
 ```
     cd server
-    sudo node startup.js --port 80 //在80端口下使用config-dev配置文件启动服务器
-    或：sudo node startup.js -c 配置文件名
+    node startup.js             //默认在5000端口
+    或node startup.js --port 80 //指定在80端口运行项目
 ```
+
+### Calendar组件
+<p>Calendar组件是IHCI平台的关键组件，部署Calendar组件后需要在IHCI平台前端的Calendar页面中设置calendar的网址，具体目录为IHCI-RE\SourceCode\site\activity-react\pages\container\calendar\iframeUrlConfig.js，网址格式protocol://ipOrDomain:port，ipOrDomain填写Calendar组件部署域名，一般来说Calendar都与IHCI平台在同一个服务器部署，即域名相同，port填写Calendar组件运行端口，Calendar组件默认运行在8000端口，如果使用nginx代理的话则填写对应监听端口。</p>
