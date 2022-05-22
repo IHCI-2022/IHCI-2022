@@ -369,7 +369,7 @@ const kikMember = async (req, res, next) => {
         }
         const result = await teamDB.delMember(teamId, tarMemberId)
         await userDB.delTeam(tarMemberId, teamId)
-        const result2 = await roleDB.findRole(userId, teamId)
+        const result2 = await roleDB.findRole(tarMemberId, teamId)
         await roleDB.delRoleById(result2._id)
 
         resProcessor.jsonp(req, res, {
