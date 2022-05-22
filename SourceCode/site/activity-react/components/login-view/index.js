@@ -238,11 +238,11 @@ export class LoginView extends React.Component {
             {
                 this.state.loginBlock == "signUp" ?
                     <div className='login-view-form'>
+                        <input type='text' className='auth-input' placeholder='请输入昵称'
+                            vlaue={this.state.createNickname} onChange={this.createNicknameHandle}></input>
                         <input type="number" pattern="[0-9]*" className="auth-input" placeholder="请输入手机号"
                             value={this.state.createPhone} onChange={this.createPhoneHandle}
                             onClick={this.judgeUsernameEmptyHandle} autoFocus></input>
-                        <input type='text' className='auth-input' placeholder='请输入昵称'
-                            vlaue={this.state.createNickname} onChange={this.createNicknameHandle}></input>
                         <div className='input-box'>
                             <input className="auth-input" placeholder="请输入密码"
                                 type={(this.state.passwdShow)?'text':'password'} value={this.state.createPassword} onChange={this.createPasswordHandle}>
@@ -274,8 +274,8 @@ export class LoginView extends React.Component {
             {
                 this.state.loginBlock == "login" ?
                     <div className='login-view-form'>
-                        <div className="auth-desc">用户名</div>
-                        <input type="number" pattern="[0-9]*" className="auth-input" value={this.state.username} onChange={this.usernameHandle}></input>
+                        <div className="auth-desc">账号</div>
+                        <input type="number" pattern="[0-9]*" className="auth-input" placeholder="手机号" value={this.state.username} onChange={this.usernameHandle}></input>
                         <div className="auth-desc">密码</div>
                         <input className="auth-input" type="password" value={this.state.password} onChange={this.passwordHandle}></input>
                         <div className="forgetPwd" onClick={this.forgetPwd}>忘记密码?</div>
