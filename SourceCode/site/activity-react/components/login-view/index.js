@@ -148,7 +148,7 @@ export class LoginView extends React.Component {
 
     loginHandle = async () => {
         if (this.state.infoCheck.usernameEmpty) {
-            window.toast("用户名为空")
+            window.toast("账号为空")
             return
         }
         if (this.state.infoCheck.passwordEmpty) {
