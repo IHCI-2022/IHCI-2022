@@ -380,6 +380,62 @@ const loginAndBindWx = async (req, res, next) => {
     }
 }
 
+const login_phone =async (req, res, next) => {
+    
+    const userInfo = req.body.userInfo
+    if (!userInfo.username || !userInfo.code ) {
+        resProcessor.jsonp(req, res, {
+            state: {
+                code: 3000,
+                msg: "参数不全"
+            },
+            data: {}
+        });
+        return
+    }
+
+    const code = await get(userInfo.username)
+    if (userInfo.code !== code) {
+        resProcessor.jsonp(req, res, {
+            state: {
+                code: 1000,
+                msg: "验证码错误"
+            },
+            data: {}
+        });
+        return
+    }
+    else
+    {
+        
+    const username = lo.get(req, 'body.userInfo.username')
+    const result = await UserDB.login_phoneJudge(username)
+   
+    if (result) {
+        req.rSession.userId = result._id
+        resProcessor.jsonp(req, res, {
+            state: {
+                code: 0
+            },
+            data: {
+                sysTime: new Date().getTime(),
+                userPo: result
+            }
+        });
+    } else {
+        resProcessor.jsonp(req, res, {
+            state: {
+                code: 1000,
+                msg: '登录失败'
+            },
+            data: {}
+        });
+    }
+    }
+
+
+}
+
 const getMyInfo = async (req, res, next) => {
     const userID = req.rSession.userId
     const result = await UserDB.findByUserId(userID)
@@ -889,6 +945,7 @@ module.exports = [
 
 
     ['POST', '/api/login', login],
+    ['POST', '/api/login_phone', login_phone],
     ['GET', '/wxLogin', wxLogin],
 
     ['POST', '/api/logout', apiAuth, logout],

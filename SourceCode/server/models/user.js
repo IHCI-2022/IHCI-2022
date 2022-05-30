@@ -68,6 +68,7 @@ userSchema.statics = {
             })
         }
     },
+    
     authJudge: async function(un, pw) {
         const result = await this.findOne({username: un}).exec()
         if(result) {
@@ -76,6 +77,13 @@ userSchema.statics = {
             return null
         }
     },
+
+    login_phoneJudge: async function(un) {
+        const result = await this.findOne({username:un}).exec()
+
+        return result
+    },
+
     findByUserId: async function(userId) {
         const result = await this.findById(userId)
         return result
