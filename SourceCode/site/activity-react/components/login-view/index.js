@@ -39,7 +39,7 @@ export class LoginView extends React.Component {
     }
 
     setToSignUpHandle = () => {
-        if (this.state.loginBlock === 'login'||'login_phone') {
+        if (this.state.loginBlock === 'login'||this.state.loginBlock === 'login_phone') {
             this.setState({
                 loginBlock: 'signUp'
             })
@@ -296,12 +296,12 @@ export class LoginView extends React.Component {
         return <div className="auth-con">
             <div className="auth-nav">
                 <div
-                    className={this.state.loginBlock == "login"||"login_phone" ? "auth-nav-item-login active" : "auth-nav-item-login"}
-                >{(this.state.loginBlock === "login"||"login_phone") ? "登录" : "注册"}</div>
+                    className={(this.state.loginBlock === 'login'||this.state.loginBlock === 'login_phone') ? "auth-nav-item-login active" : "auth-nav-item-login"}
+                >{(this.state.loginBlock === 'login'||this.state.loginBlock === 'login_phone') ? "登录" : "注册"}</div>
                 <div
-                    className={this.state.loginBlock == "signUp" ? "auth-nav-item-signup active" : "auth-nav-item-signup"}
+                    className={this.state.loginBlock === "signUp" ? "auth-nav-item-signup active" : "auth-nav-item-signup"}
                     onClick={this.setToSignUpHandle}
-                >{(this.state.loginBlock === "login"||"login_phone") ? "注册" : "登录"}</div>
+                >{(this.state.loginBlock === 'login'||this.state.loginBlock === 'login_phone') ? "注册" : "登录"}</div>
             </div>
             {
                 this.state.loginBlock == "signUp" ?
