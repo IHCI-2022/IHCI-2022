@@ -37,7 +37,8 @@
 
 ### &emsp;2. 构建项目
 <p>&emsp;此部分指令的默认目录均是在项目的Sourcecode执行。</p>
-```
+
+```shell
     npm install
     npm run build
     gulp //如果未安装gulp先要运行 npm install -g gulp 安装gulp
@@ -52,7 +53,8 @@
 
 ### &emsp;3. 运行项目
 <p>该操作所在的文件夹在构建完成的dest中。</p>
-```
+
+```shell
     cd server
     node startup.js             //默认在5000端口
     或node startup.js --port 80 //指定在80端口运行项目
