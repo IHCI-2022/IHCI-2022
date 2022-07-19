@@ -87,7 +87,7 @@ const test1 = async (req, res, next) => {
 const addwww = async (req, res, next) => {
     console.log(req.url)
     if(req.url.indexOf('ihci.')=== -1&&req.url.indexOf('localhost')!== -1){
-        res.redirect('https://ihci.animita.cn')
+        res.redirect('https://www.animita.cn')
     }
     else{
         next()
@@ -176,7 +176,7 @@ const silentAuth = async(req, res, next) => {
         //静默授权
         var urlObj = url.parse(req.url,true)
         if(!req.rSession.userId&&!urlObj.query.code){
-            res.redirect(`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx87136e7c8133efe3&redirect_uri=http%3A%2F%2Fihci.animita.cn${urlObj.pathname.substr(0,urlObj.pathname.length)}&response_type=code&scope=snsapi_base&state=123#wechat_redirect`)
+            res.redirect(`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx87136e7c8133efe3&redirect_uri=http%3A%2F%2Fwww.animita.cn${urlObj.pathname.substr(0,urlObj.pathname.length)}&response_type=code&scope=snsapi_base&state=123#wechat_redirect`)
         }
         if(!req.rSession.userId&&urlObj.query.code){
             var code = urlObj.query.code
