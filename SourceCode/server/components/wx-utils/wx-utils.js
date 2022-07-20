@@ -52,7 +52,7 @@ function formatDate(date, formatStr) {
 
 // 网页登录，用 code 拿用户的 access_token (包括openid 和 unionid)
 export const web_codeToAccessToken = async function (code) {
-    const result = await fetch(`https://api.weixin.qq.com/sns/oauth2/access_token?appid=${conf.webAppId}&secret=${conf.webAppSe}&code=${code}&grant_type=authorization_code`)
+    const result = await fetch(`https://api.weixin.qq.com/sns/oauth2/access_token?appid=${conf.pubAppId}&secret=${conf.pubAppSe}&code=${code}&grant_type=authorization_code`)
     const data = await result.json()
     return data
 }
@@ -160,7 +160,7 @@ export const createTopicTemplate = async function (userIdList, topicObj) {
             pub_pushTemplateMsg(
                 item.openid,
                 'p6pZBXX0SaqODRDZgY_3NqyIAK0mYN9HXYq6yMLyA04',
-                'http://ihci.animita.cn/discuss/topic/' + topicObj._id,
+                'http://www.animita.cn/discuss/topic/' + topicObj._id,
                 {
                     "first": {
                         "value": topicObj.creator.name + " 创建了讨论",
