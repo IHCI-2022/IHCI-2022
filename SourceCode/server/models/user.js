@@ -138,7 +138,7 @@ userSchema.statics = {
             queryList.push({_id: item})
         })
         if(queryList && queryList.length) {
-            const result = await this.find({$or: queryList}, {wxUserInfo: 1}).exec()
+            const result = await this.find({$or: queryList}, {openid: 1}).exec()
             result.forEach(item => {
                 if(item.openid){
                     openidList.push({
