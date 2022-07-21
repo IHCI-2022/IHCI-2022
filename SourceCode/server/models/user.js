@@ -140,9 +140,9 @@ userSchema.statics = {
         if(queryList && queryList.length) {
             const result = await this.find({$or: queryList}, {wxUserInfo: 1}).exec()
             result.forEach(item => {
-                if(item.wxUserInfo.openid){
+                if(item.openid){
                     openidList.push({
-                        openid:item.wxUserInfo.openid
+                        openid:item.openid
                     })
                 }
             });
