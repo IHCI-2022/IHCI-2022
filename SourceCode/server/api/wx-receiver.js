@@ -33,7 +33,7 @@ var subscribeEventHandle = async (openid) => {
                     openid: wxUserInfo.openid,
                 })
             }
-            pub_pushTemplateMsg(openid, 'YH-TY6g0sbVJgC5Ppk-cBDvLlFCfQxRm61QKj7IOSV4', 'www.animita.cn', {
+            pub_pushTemplateMsg(openid, 'gkIpoj5MwOrC6cVqZQO8yApWEbfbnvLam78sKgLZnHM', 'www.animita.cn', {
                 "first": {
                     "value": "关注服务号成功，您已注册平台",
                 },
