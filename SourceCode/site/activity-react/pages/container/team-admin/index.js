@@ -66,7 +66,7 @@ export default class TeamAdmin extends React.Component{
     }
 
     isName = (name) => {
-        const reg = /^[\u4E00-\u9FA5A-Za-z]{1}[\u4E00-\u9FA5A-Za-z0-9_\-]{0,11}$/;
+        const reg = /^[\u4E00-\u9FA5A-Za-z0-9]{1}[\u4E00-\u9FA5A-Za-z0-9_\-]{0,11}$/;
         return reg.test(name);
     }
     teamNameInputHandle = (e) => {
