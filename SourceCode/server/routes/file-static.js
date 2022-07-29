@@ -18,7 +18,8 @@ var ossFileProcessor = async (req, res, next) => {
             accessKeyId: conf.ossConf.ossAdminAccessKeyId,
             accessKeySecret: conf.ossConf.ossAdminAccessKeySecret,
             bucket: conf.ossConf.bucket,
-            region: conf.ossConf.region
+            region: conf.ossConf.region,
+            secure: true
         });
         var result = await client.get(ossKey);
 
@@ -38,7 +39,8 @@ var ossImgProcessor = async (req, res, next) => {
             accessKeyId: conf.ossConf.ossAdminAccessKeyId,
             accessKeySecret: conf.ossConf.ossAdminAccessKeySecret,
             bucket: conf.ossConf.bucket,
-            region: conf.ossConf.region
+            region: conf.ossConf.region,
+            secure: true
         });
         var infoResult = await client.get(ossKey, {process: 'image/info'})
         var jsobj = JSON.parse(infoResult.content.toString())
@@ -67,7 +69,8 @@ var ossHeadProcessor = async (req, res, next) => {
             accessKeyId: conf.ossConf.ossAdminAccessKeyId,
             accessKeySecret: conf.ossConf.ossAdminAccessKeySecret,
             bucket: conf.ossConf.bucket,
-            region: conf.ossConf.region
+            region: conf.ossConf.region,
+            secure: true
         });
         var infoResult = await client.get(ossKey, {process: 'image/info'})
         var jsobj = JSON.parse(infoResult.content.toString())
