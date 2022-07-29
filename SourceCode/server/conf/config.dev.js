@@ -32,14 +32,14 @@ var config = {
     'smsAppSe':'KItFh8WqT8OpQXEIaAm8pCGQ6g33t9',
 
     'ossConf': {
-        'ossAdminAccessKeyId': 'LTAIkrgpPKLOb6CJ',
-        'ossAdminAccessKeySecret': 'STTW2qHnI6NLNuUJAjmom6rDSO2ksr',
+        'ossAdminAccessKeyId': 'LTAI5tKBcAv56SWfAPrgkdJ8',
+        'ossAdminAccessKeySecret': 'ZVY6PQXabeIui1E2KEI6LcZzBD3hgn',
 
-        'accessKeyId': 'LTAI50JBylPO2aRe',
-        'accessKeySecret': 'dCXkMpinyC853SACdOqu2LyM2PI3Cv',
-        'roleArn': 'acs:ram::1656281103392398:role/aliyunosstokengeneratorrole',
-        'region': 'oss-cn-shenzhen',
-        'bucket': 'arluber',
+        'accessKeyId': 'LTAI5tF1hokanRXRW9SuAJLw',
+        'accessKeySecret': 'FVBZdM5UlvCISAWBdgBTiWL1jDkSc8',
+        'roleArn': 'acs:ram::1833862883896167:role/AliyunOSSTokenGeneratorUser',
+        'region': 'oss-cn-beijing',
+        'bucket': 'ihci',
     },
 
     // mail: 'http://localhost:5000',
