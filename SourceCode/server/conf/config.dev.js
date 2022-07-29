@@ -37,7 +37,7 @@ var config = {
 
         'accessKeyId': 'LTAI5tF1hokanRXRW9SuAJLw',
         'accessKeySecret': 'FVBZdM5UlvCISAWBdgBTiWL1jDkSc8',
-        'roleArn': 'acs:ram::1833862883896167:role/AliyunOSSTokenGeneratorUser',
+        'roleArn': 'acs:ram::1833862883896167:role/aliyunosstokengeneratorrole',
         'region': 'oss-cn-beijing',
         'bucket': 'ihci',
     },
