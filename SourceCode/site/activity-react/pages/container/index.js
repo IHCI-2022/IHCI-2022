@@ -137,7 +137,6 @@ class App extends React.Component{
             method: 'POST',
             body: {}
         })
-        console.log(result)
         if(result.data.userObj && result.data.userObj.personInfo) {
             this.setState({
                 headImg: result.data.userObj.personInfo.headImg,
