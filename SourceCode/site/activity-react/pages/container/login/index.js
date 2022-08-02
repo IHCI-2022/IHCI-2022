@@ -51,7 +51,7 @@ export default class LoginPage extends React.Component{
 
             <div className="nav">
                 <div className="max-w-con nav-con">
-                    <img className="logo" src={require('./logo.png')} onClick={this.toHomePage}/>
+                    <img className="logo" src="https://ihci.oss-cn-beijing.aliyuncs.com/home/logo.png" onClick={this.toHomePage}/>
                     {/* <div className="slogan">
                             <div className="english">All for the valuable code</div> 
                             <div className="chinese">一切为了有价值的代码</div>
