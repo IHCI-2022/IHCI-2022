@@ -31,14 +31,17 @@ var subscribeEventHandle = async (openid) => {
             if(userObj) {
                 await UserDB.updateUser(userObj._id, {
                     openid: wxUserInfo.openid,
-                })
-            }
+
+                })          
+            } 
+            var username = userObj.personInfo.name || '';
+
             pub_pushTemplateMsg(openid, 'gkIpoj5MwOrC6cVqZQO8yApWEbfbnvLam78sKgLZnHM', 'www.animita.cn', {
                 "first": {
                     "value": "关注服务号成功，您已注册平台",
                 },
                 "keyword1":{
-                    "value": userObj.personInfo.name+ '关注服务号成功',
+                    "value": username + '关注服务号成功',
                 },
                 "keyword2": {
                     "value": new Date().toString(),

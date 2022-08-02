@@ -11,7 +11,7 @@ import Editor from '../../../components/editor'
 import fileUploader from '../../../utils/file-uploader'
 import TopicItem from '../../../components/topic-item'
 import {create} from '../../../../../server/components/uuid/uuid'
- 
+import Preview from '../../../components/Preview'
 class TeamChoseItem extends React.PureComponent {
     render() {
         return (
@@ -49,6 +49,9 @@ export default class TeamDetail extends React.Component {
 
         renameId: '',
         renameName: '',
+         modalIsOpen: false,
+             currentFile: "",
+             currentType: null,
     }
 
     componentDidMount = async () => {
@@ -129,8 +132,9 @@ export default class TeamDetail extends React.Component {
     }
 
     handleTopicContentChange = (content) => {
+        // WH_DOING
         this.setState({
-            topicContent: content
+            topicContent: content.replace(new RegExp('<p></p>', 'g'), '<br />')
         })
     }
 
@@ -640,7 +644,38 @@ export default class TeamDetail extends React.Component {
     downloadHandle = (ossKey) => {
         window.open(window.location.origin + '/static/' + ossKey)
     }
-
+//预览
+previewHandle(ossKey) {
+    let file = window.location.origin + '/static/' + ossKey;
+    let type = file.split(".").pop()
+    // if (type=="pdf"){
+    //     this.setState({
+    //         currentFile: file,
+    //         currentType: 'pdf',
+    //     })
+    // } else if (type == 'jpg' || type == 'png' || type == 'jpeg' || type == 'gif' || type == 'webp'){
+    //     this.setState({
+    //     currentFile: file,
+    //     currentType: "image",
+    //     })
+    // }else{
+    //     return;
+    // }
+    this.setState({
+        currentFile: file,
+        currentType: type,
+    })
+    this.setState({
+        modalIsOpen: true
+    })
+} //关闭预览
+onClose = (result) => {
+    console.log(result)
+    // 很奇怪这里的result就是子组件那bind的第一个参数this，msg是第二个参数
+    this.setState({
+        modalIsOpen: false
+    })
+}
     folderClickHandle = (dir) => {
         location.href = '/files/' + this.teamId + '/?dir=/' + dir
     }
@@ -782,13 +817,17 @@ export default class TeamDetail extends React.Component {
 
     render() {
         let teamInfo = this.state.teamInfo
+        let {
+            modalIsOpen
+        } = this.state
         return (
+            < React.Fragment >
             <Page title={teamInfo.name + " - IHCI"}
                 className="project-page">
                 <div className="discuss-con page-wrap">
                     <div className="team-info">
                         <div className="left">
-                            <div className="head">{teamInfo.name}</div>
+                            <div className="head">{teamInfo.name} 团队</div>
                             <pre><div className="team-des">{teamInfo.desc}</div>  </pre>
                         </div>
                         <div className="right">
@@ -934,6 +973,7 @@ export default class TeamDetail extends React.Component {
                                                     <div className="size">{item.size}</div>
                                                     <div className="last-modify">{formatDate(item.last_modify_time)}</div>
                                                     {(INIT_DATA.role!=='visitor')&&<div className="tools">
+                                                         < span onClick = {() => {this.previewHandle(item.ossKey)}} >预览</span>
                                                         <span onClick={() => { this.downloadHandle(item.ossKey) }}>下载</span>
                                                         <span onClick={() => { this.openMoveModalHandle(item) }}>移动</span>
                                                         <span onClick={() => { this.renameHandle(item) }}> 重命名 </span>
@@ -952,6 +992,10 @@ export default class TeamDetail extends React.Component {
 
                 </div>
             </Page>
+            {modalIsOpen ? (
+             <Preview url={this.state.currentFile} type={this.state.currentType} onClose={this.onClose}></Preview>
+          ) : null}
+            </React.Fragment >
         )
     }
 }
