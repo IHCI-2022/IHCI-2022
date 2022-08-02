@@ -83,7 +83,7 @@ export default class Beditor extends React.Component{
                     {
                         _props.attachments&&_props.attachments.map((item, index) => {
                             return( <div className="file-item" key={"file-name"+item.name}>
-                                {item.name}
+                                {item.fileName}
                                 <i className="icon iconfont" onClick={_props.deleteFile.bind(index)}>&#xe70b;</i>
                             </div> )
                         })

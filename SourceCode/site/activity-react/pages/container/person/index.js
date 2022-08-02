@@ -505,6 +505,32 @@ export default class Person extends React.Component{
                 headImg: window.location.origin+'/head/'+ossKey
             }
         })
+
+        const result = await api('/api/setUserInfo', {
+            method: 'POST',
+            body: {
+                ...this.state.personInfo
+            }
+        })
+
+        const result1 = await api('/api/topic/changeCreator',{
+            method:'POST',
+            body:{
+                personInfo: this.state.personInfo,
+                originPersonInfo: this.state.originPersonInfo,
+            }
+        })
+
+        if(result.state.code === 0) {
+            if(INIT_DATA.userObj.personInfo){
+                window.toast(staticText.RESPONSE_MESSAGE.SET_SUCCESS)
+            }
+            this.setState({
+                confirmEditMail: false,
+            });
+        } else {
+            window.toast(staticText.RESPONSE_MESSAGE.SET_FAIL)
+        }
        
     }
 
