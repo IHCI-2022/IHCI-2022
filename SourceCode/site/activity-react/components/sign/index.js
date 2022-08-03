@@ -9,23 +9,32 @@ import WxLoginDialog from '../../components/wx-login-dialog'
 import SMSBlock from '../../components/smsCode'
 export class SignView extends React.Component {
     state = {
-        //loginBlock: signUp || login
+        //loginBlock: signUp || login || login_phone
         loginBlock: "login",
 
         username: '',
         password: '',
+
+        login_phoneNum: '',
+        login_phoneCode: '',
 
         createPhone: '',
         authCode: '',
         createPassword: '',
         createNickname:'',
         infoCheck: {
+            usernameEmpty: true,
+            passwordEmpty: true,
+
             createPhoneEmpty: true,
             authCodeEmpty: true,
             createPasswordEmpty: true,
             usernameEmpty: true,
             passwordEmpty: true,
-            createNicknameEmpty: true
+            createNicknameEmpty: true,
+
+            createLogin_phoneCodeEmpty: true,
+            createLogin_phoneNumEmpty: true
         },
         helpDisplay: false
     }
@@ -37,7 +46,7 @@ export class SignView extends React.Component {
     }
 
     setToSignUpHandle = () => {
-        if (this.state.loginBlock === 'login') {
+        if (this.state.loginBlock === 'login'||this.state.loginBlock === 'login_phone') {
             this.setState({
                 loginBlock: 'signUp'
             })
@@ -51,6 +60,11 @@ export class SignView extends React.Component {
     setToLoginHandle = () => {
         this.setState({
             loginBlock: 'login'
+        });
+    }
+    setToLogin_phoneHandle = () =>{
+        this.setState({
+            loginBlock: 'login_phone'
         });
     }
     createNicknameHandle = (e) => {
@@ -86,6 +100,22 @@ export class SignView extends React.Component {
             infoCheck: {
                 ...this.state.infoCheck,
                 usernameEmpty: usernameEmpty
+            }
+        })
+    }
+    login_phoneNumHandle =(e) => {
+        const login_phoneNum = e.target.value
+        var createLogin_phoneNumEmpty = true
+        if (login_phoneNum) {
+            createLogin_phoneNumEmpty = false
+        } else {
+            createLogin_phoneNumEmpty = true
+        }
+        this.setState({
+            login_phoneNum: e.target.value,
+            infoCheck: {
+                ...this.state.infoCheck,
+                createLogin_phoneNumEmpty: createLogin_phoneNumEmpty
             }
         })
     }
@@ -179,6 +209,35 @@ export class SignView extends React.Component {
         }
     }
 
+    login_phoneHandle =async (e) =>{
+        e.preventDefault();
+        if (this.state.infoCheck.createLogin_phoneNumEmpty) {
+            window.toast("手机号为空")
+            return
+        }
+        if (this.state.infoCheck.createLogin_phoneCodeEmpty) {
+            window.toast("验证码为空")
+            return
+        }
+
+        const result = await api('/api/login_phone', {
+            method: 'POST',
+            body: {
+                userInfo: {
+                    username: this.state.login_phoneNum, // 手机验证码登录 账号为手机号码
+                    code: this.state.login_phoneCode,                 
+                }
+            }
+        })
+
+        if (result.state.code === 0) {
+            window.toast("登录成功")
+            setTimeout("window.location.href = '/team'", 1000)
+        } else {
+            window.toast(result.state.msg || "登录失败")
+        }
+    }
+
     signHandle = async (e) => {
         e.preventDefault();
         // todo 检验账号密码是否可用
@@ -238,6 +297,17 @@ export class SignView extends React.Component {
 
     }
 
+    login_phoneSmsCodeInputHandle =(e) => {
+        const code = e.target.value
+        this.setState({
+            login_phoneCode: code,
+            infoCheck: {
+                ...this.state.infoCheck,
+                createLogin_phoneCodeEmpty: false
+            }
+        })
+    }
+
     render() {
         return <div className="auth-con">
             {/* <div className="auth-nav">
@@ -253,11 +323,11 @@ export class SignView extends React.Component {
                 this.state.loginBlock == "register" ?
                   <div className='login-view-form'>
                     <form onSubmit={this.signHandle}>
+                        <input type='text' className='auth-input' placeholder='请输入昵称' 
+                            vlaue={this.state.createNickname} onChange={this.createNicknameHandle}></input>
                         <input pattern="[0-9]*" className="auth-input" placeholder="请输入手机号"
                             value={this.state.createPhone} onChange={this.createPhoneHandle}
                             onClick={this.judgeUsernameEmptyHandle} autoFocus></input>
-                        <input type='text' className='auth-input' placeholder='请输入昵称' 
-                            vlaue={this.state.createNickname} onChange={this.createNicknameHandle}></input>
                         <input className="auth-input" placeholder="请输入密码"
                             type="password" value={this.state.createPassword} onChange={this.createPasswordHandle}></input>
                         <SMSBlock smsCodeInputHandle={this.smsCodeInputHandle}
@@ -281,13 +351,45 @@ export class SignView extends React.Component {
                         <button className="submit-btn" >加入我们</button>
                     </form>
                     </div>
-                  :
+                :
+
+                  this.state.loginBlock == "login"?
                   <div className='login-view-form'>
                       <form onSubmit={this.loginHandle}>
-                          <div className="auth-desc">用户名</div>
+                          <div className="auth-desc">账号</div>
                           <input pattern="[0-9]*" className="auth-input" placeholder="请输入手机号" value={this.state.username} onChange={this.usernameHandle} autoFocus></input>
                           <div className="auth-desc">密码</div>
                           <input className="auth-input" type="password" placeholder="请输入密码" value={this.state.password} onChange={this.passwordHandle}></input>
+                          <div
+                              className="forgetPwd"
+                            onClick={this.setToLogin_phoneHandle}
+                          >
+                            验证码登录
+                          </div>
+                          <div className="forgetPwd" onClick={this.forgetPwd}>忘记密码?</div>
+                          <button className="submit-btn" >加入我们</button>
+                      </form>
+                      <div className="wx-submit-btn" onClick={this.props.showWxDialogHandle}>
+                        <img className="wx-submit-img" src={require('./wechat@2x.png')} />
+                            微信登录
+                      </div>
+                  </div>
+                  :
+                  <div className='login-view-form'>
+                      <form onSubmit={this.login_phoneHandle}>
+                          <div className="auth-desc">手机号</div>
+                          <input pattern="[0-9]*" className="auth-input" placeholder="请输入手机号" value={this.state.login_phoneNum} onChange={this.login_phoneNumHandle} autoFocus></input>
+                          <SMSBlock smsCodeInputHandle={this.login_phoneSmsCodeInputHandle}
+                            smsCode={this.state.login_phoneCode}
+                            phoneNumber={this.state.login_phoneNum}
+                            phoneEmpty={this.state.infoCheck.createLogin_phoneNumEmpty}
+                        ></SMSBlock>
+                          <div
+                              className="forgetPwd"
+                            onClick={this.setToLoginHandle}
+                          >
+                            返回
+                          </div>
                           <div className="forgetPwd" onClick={this.forgetPwd}>忘记密码?</div>
                           <button className="submit-btn" >加入我们</button>
                       </form>
