@@ -1,5 +1,12 @@
-# IHCI-RE
-于2019-8-8从IHCI-HG/IHCI-RE中手动提取出来的IHCI-RE
-***
-注：在正式操作之前，请查看Documents文件夹中的相关文档。
-<b>注意：分支策略有所修改，请及时查看文档中的分支使用规范</b>
+# IHCI-2022
+
+<div align="center">
+<img src="https://ihci.oss-cn-beijing.aliyuncs.com/home/logo.png" width=55%/>
+</div>
+
+## 目录
+- [项目介绍](Documents/Introduce.md)
+- [知识预备](Documents/Knowledge.md)
+- [开发指南](Documents/Develop.md)
+
+> 服务器部署与维护相关文档在Tapd上
