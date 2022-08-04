@@ -2,8 +2,8 @@
 > 要使用日历模块请先运行[Calendar](https://github.com/IHCI-2022/calendar)
 ## 依赖
 
-- Node.js 8.9.0
-- npm 5.5.1
+- **Node.js 8.9.0**
+- **npm 5.5.1**
 - MongoDB
 - Redis
 
