@@ -9,5 +9,4 @@ IHCI平台是一个学生团队项目管理平台，其开发框架为MERN框架
 * server: 后端文件夹。
 * site: 前端文件夹。
     * activity-react: 前端项目文件夹。
-    * activity：我也不知道是什么
 * dest：项目打包后文件所在目录（若没有，可手动生成）
