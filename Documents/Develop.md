@@ -10,7 +10,7 @@
 ## 开始
 ```shell
 git clone https://github.com/IHCI-2022/IHCI-2022.git
-cd IHCI-RE/SourceCode
+cd IHCI-2022/SourceCode
 npm i
 npm run build:dev    //webpack的watch模式会监听文件变化自动重新打包
 npm run start        //默认在5000端口
