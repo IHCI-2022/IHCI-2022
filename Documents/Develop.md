@@ -24,6 +24,7 @@ npm run build        //打包site
 gulp                 //打包server 
 ```
 完成后会生成dest和public文件，将public文件复制到dest中，压缩dest文件夹即可完成打包，获得dest.zip
+
 在要部署的服务器上
 ```shell
 unzip dest.zip
