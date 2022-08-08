@@ -53,7 +53,7 @@ var config = {
         }
     },
 
-    db: 'mongodb://127.0.0.1:27017/ihci',
+    db: 'mongodb://root:hgc16711@8.134.49.87:27017/ihci',
 
     'lruMaxAge': 36000,
     'lruMax': 500,
