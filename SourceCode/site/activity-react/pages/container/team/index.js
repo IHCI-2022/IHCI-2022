@@ -194,7 +194,7 @@ export default class Team extends React.Component{
                                 })
                             })()
                             }
-                              <div class="load-more" onClick={this.getMoreManaged}>{this.state.managedFinish?'--没有更多了--':'加载更多'} </div>
+                              <div className="load-more" onClick={this.getMoreManaged}>{this.state.managedFinish?'--没有更多了--':'加载更多'} </div>
                         </div>
 
                         <div className="head">我参与的团队</div>
@@ -207,7 +207,7 @@ export default class Team extends React.Component{
                                 })
                             })()
                             }
-                            <div class="load-more" onClick={this.getMoreAll}>{this.state.allFinish?'--没有更多了--':'加载更多'} </div>
+                            <div className="load-more" onClick={this.getMoreAll}>{this.state.allFinish?'--没有更多了--':'加载更多'} </div>
                         </div>
                         
                     </div>
