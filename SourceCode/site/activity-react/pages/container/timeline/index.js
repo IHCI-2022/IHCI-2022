@@ -5,6 +5,7 @@ import api from '../../../utils/api';
 import { timeParse, formatDate, createMarkup } from '../../../utils/util'
 import Page from '../../../components/page'
 
+
 const newTimeLineItemNum = 20
 const moreTimeLineItemNum = 10
 
@@ -24,7 +25,6 @@ class TeamChoseItem extends React.PureComponent{
 class TimelineItem extends React.PureComponent{
 
     toOriginHandle = () => {
-
         var pathname = ''
         var type = 'TOPIC'
 
@@ -137,11 +137,12 @@ class TimelineItem extends React.PureComponent{
     state = {
         headerName:""
     }
+
     render() {
         switch(this.props.type){
             case 'CHANGE_TASK_DDL': 
                 return(
-                    <div className='news-item-wrap'>
+                    <div className='news-item-wrap' onClick={() => this.toOriginHandle(this.props.type)}>
                         <div className="time">{formatDate(this.props.create_time, 'hh:mm')}</div>
                         <img src={this.props.creator.headImg} alt="" className="head-img" />
 
@@ -158,7 +159,7 @@ class TimelineItem extends React.PureComponent{
                 )
             case 'CHANGE_CHECKITEM_DDL':
                 return(
-                    <div className='news-item-wrap'>
+                    <div className='news-item-wrap'onClick={() => this.toOriginHandle(this.props.type)}>
                         <div className="time">{formatDate(this.props.create_time, 'hh:mm')}</div>
                         <img src={this.props.creator.headImg} alt="" className="head-img" />
 
@@ -175,7 +176,7 @@ class TimelineItem extends React.PureComponent{
                 )
             case 'CHANGE_TASK_HEADER': 
                 return(
-                    <div className='news-item-wrap'>
+                    <div className='news-item-wrap'onClick={() => this.toOriginHandle(this.props.type)}>
                         <div className="time">{formatDate(this.props.create_time, 'hh:mm')}</div>
                         <img src={this.props.creator.headImg} alt="" className="head-img" />
 
@@ -191,7 +192,7 @@ class TimelineItem extends React.PureComponent{
                 )
             case 'CHANGE_CHECKITEM_HEADER':
                 return(
-                    <div className='news-item-wrap'>
+                    <div className='news-item-wrap'onClick={() => this.toOriginHandle(this.props.type)}>
                         <div className="time">{formatDate(this.props.create_time, 'hh:mm')}</div>
                         <img src={this.props.creator.headImg} alt="" className="head-img" />
 
@@ -207,7 +208,7 @@ class TimelineItem extends React.PureComponent{
                 )
             case 'CREATE_TASKLIST': case 'DELETE_TASKLIST':
                 return(
-                    <div className='news-item-wrap'>
+                    <div className='news-item-wrap' onClick={() => this.toOriginHandle(this.props.type)}>
                         <div className="time">{formatDate(this.props.create_time, 'hh:mm')}</div>
                         <img src={this.props.creator.headImg} alt="" className="head-img" />
         
@@ -225,7 +226,7 @@ class TimelineItem extends React.PureComponent{
                 )
             default:
                 return(
-                    <div className='news-item-wrap'>
+                    <div className='news-item-wrap' onClick={() => this.toOriginHandle(this.props.type)}>
                         <div className="time">{formatDate(this.props.create_time, 'hh:mm')}</div>
                         <img src={this.props.creator.headImg} alt="" className="head-img" />
         
