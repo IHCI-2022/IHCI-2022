@@ -458,20 +458,23 @@ export default class SearchResult extends React.Component{
                         </div>}
                         {!this.state.noQuery && <div className='right'>
                             <div className='filter-title'>
-                                筛选结果:
+                                筛选:
                             </div>
                             <div className='team-filter' onClick={this.teamFilterHandle}>
                                 {
                                     this.props.location.query.teamId ? this.props.personInfo.teamList.map((item) => {
                                         if(item.teamId == this.props.location.query.teamId)
                                             return item.teamName
-                                    }) : "根据团队"
+                                    }) 
+                                    : 
+                                    <div>团队<img src={require('./Pull-down.jpg')} className = 'pull-down-jpg'></img></div>
                                 }
                             </div>
                             <div className='type-filter' onClick={this.typeFilterHandle}>
                                 {
                                     this.props.location.query.type ? this.typeMap[this.props.location.query.type]
-                                    : "根据类型"
+                                    : 
+                                    <div>类型<img src={require('./Pull-down.jpg')} className = 'pull-down-jpg'></img></div>
                                 }
                             </div>
                         </div>}

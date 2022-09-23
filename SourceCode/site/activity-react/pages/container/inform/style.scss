@@ -131,6 +131,19 @@
             position: relative;
             padding: 0 20px 30px 88px;
         }
+        .tobe-readed-tag-item {
+            height: 40px;
+            line-height: 40px;
+            padding: 5px 10px;
+            margin-left: 90px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            width: 100px;
+            color: white;
+            
+            background-color: rgb(255, 158, 41);
+            text-align: center;
+        }
 .infs-item-wrap {
     display: flex;
     align-items: flex-start;
@@ -187,8 +200,9 @@
         padding: 0 30px;
         border-radius: 6px;
         width: 200px;
+        color: white;
 
-        background-color: #e6e6e6;
+        background-color: rgb(255, 158, 41);
         text-align: center;
 
 
@@ -201,6 +215,8 @@
         padding: 0 30px;
         border-radius: 6px;
         width: 200px;
+        font-size: 18px;
+        color: #999;
         text-align: center;
     }
 }
