@@ -137,7 +137,9 @@ class TimelineItem extends React.PureComponent{
     state = {
         headerName:""
     }
-
+    deleteTask = ()=>{
+        window.toast("该任务以被删除")
+    }
     render() {
         switch(this.props.type){
             case 'CHANGE_TASK_DDL': 
@@ -206,7 +208,7 @@ class TimelineItem extends React.PureComponent{
                         </div>
                     </div>
                 )
-            case 'CREATE_TASKLIST': case 'DELETE_TASKLIST':
+            case 'CREATE_TASKLIST': 
                 return(
                     <div className='news-item-wrap' onClick={() => this.toOriginHandle(this.props.type)}>
                         <div className="time">{formatDate(this.props.create_time, 'hh:mm')}</div>
@@ -224,6 +226,24 @@ class TimelineItem extends React.PureComponent{
                         </div>
                     </div>
                 )
+            case 'DELETE_TASKLIST':    case 'DELETE_TASK':        
+             return(
+                <div className='news-item-wrap' onClick={()=>this.deleteTask()}>
+                    <div className="time">{formatDate(this.props.create_time, 'hh:mm')}</div>
+                    <img src={this.props.creator.headImg} alt="" className="head-img" />
+    
+                    <div className="news-con">
+                        <div className="des-line">
+                            <span className="name">{this.props.creator.name}</span>
+                            <span className="type">{this.typeMap[this.props.type]}</span>
+                            <span className="topic">{this.props.title}</span>
+                        </div>
+                        <div className="BraftEditor-container">
+                                <span className="content public-DraftEditor-content BraftEditor-content" dangerouslySetInnerHTML={{__html: this.props.content.content}}>{}</span>
+                            </div>
+                    </div>
+                </div>
+            )
             default:
                 return(
                     <div className='news-item-wrap' onClick={() => this.toOriginHandle(this.props.type)}>
