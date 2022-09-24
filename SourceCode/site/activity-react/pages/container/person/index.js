@@ -101,6 +101,7 @@ export default class Person extends React.Component{
         showWxLogin: false,
         showFollow: false,
         showUsenamePwd:false,
+        ifwantUnbindWeixin:false,
         userObj: {},
         personInfo: {
             name: '',
@@ -453,6 +454,18 @@ export default class Person extends React.Component{
 
     } 
 
+    showUnbindView = () => {
+        this.setState({
+            ifwantUnbindWeixin: true,
+        })
+    }
+
+    closeUnbinView = () => {
+        this.setState({
+            ifwantUnbindWeixin: false,
+        })
+    }
+
     unbindHandle = async () => {
         const result = await api('/api/unbindWechat', {
             method: 'POST',
@@ -728,7 +741,7 @@ export default class Person extends React.Component{
 
                         !!this.state.userObj.unionid ? 
                         (!!this.state.userObj.username && !INIT_DATA.isWeixin?
-                        <div className="band" onClick={this.unbindHandle}>解绑</div>:"")
+                        <div className="band" onClick={this.showUnbindView}>解绑</div>:"")
                         :
                         <div className="band" onClick={this.openWxLoginHandle}>绑定</div>
                     
@@ -777,6 +790,25 @@ export default class Person extends React.Component{
 
 
                 <div className="save-btn" onClick={this.saveHandle}>保存</div>
+
+                {
+                     this.state.ifwantUnbindWeixin && <Page className="move-File">
+                    <div className="window" >
+                        <div className="outerBox">
+                            <div>
+                                <div>
+                                <span className="iconfont icon-close btn-cancel" onClick={this.closeUnbinView}></span>
+                                <div className="confirm-message">你确定要解绑微信吗？</div>
+                                </div>
+                                <br/>
+                                <div className="btn-confirm" onClick={this.unbindHandle}>确定解绑</div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                             
+                     </Page>
+                }
 
                 {/*LHJ_DOING 删除 个人设置 页面的 “登出”按钮
                     !INIT_DATA.isWeixin&&<div className="save-btn" onClick={this.logOutHandle}>登出</div>
