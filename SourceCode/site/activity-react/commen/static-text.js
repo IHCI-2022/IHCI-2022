@@ -105,7 +105,7 @@ const Person = {
     },
     BUTTON_TEXT: {
         TEAM_EXIT: "退出团队",
-        UPLOAD_IMAGE: "上传图片",
+        UPLOAD_IMAGE: "更换头像",
         SET_ACCOUNT: "设置账号密码",
         SUBMIT: "确定",
         WX_UNBIND: "解绑",

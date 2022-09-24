@@ -454,10 +454,11 @@ markToRead = async() =>{
                 <div className="readStateChosen">
                     <div className={this.state.activeTag == 'unread'?'read-tag-item act':'read-tag-item'} onClick={this.toReadHandle.bind(this,"unread")}>未读</div>
                     <div className={this.state.activeTag == 'isread'?'read-tag-item act':'read-tag-item'} onClick={this.toReadHandle.bind(this,"isread")}>已读</div>
-                    <div className='read-tag-item' onClick={this.markToRead}>标记为已读</div>
                 </div>
                     {this.state.activeTag == 'unread'?
-                    unreadList.map((team) => {
+                    <div>
+                        {
+                            unreadList.map((team) => {
                                 if(team.unreadArray[0]){
 
                                 return (
@@ -477,8 +478,12 @@ markToRead = async() =>{
                                         })
                                         
                                         }                    
-                                </div>)                       
-                    }}):
+                                    </div>)                       
+                                }})
+                        }
+                        { this.state.unreadList ? this.state.unreadList[0] && <div className='tobe-readed-tag-item' onClick={this.markToRead}>标记为已读</div> : ''}
+                    </div>
+                    :
                     isreadList.map((team) => {
                         if(team.isreadArray[0]){
                             return(
