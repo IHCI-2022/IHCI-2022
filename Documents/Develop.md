@@ -13,6 +13,9 @@ git clone https://github.com/IHCI-2022/IHCI-2022.git
 cd IHCI-2022/SourceCode
 npm i
 npm run build:dev    //webpack的watch模式会监听文件变化自动重新打包
+
+// 再重新启动一个terminal
+cd IHCI-2022/SourceCode
 npm run start        //默认在5000端口
 ```
 项目会在`127.0.0.1:8000`运行，本地运行没开https使用不了微信相关功能
