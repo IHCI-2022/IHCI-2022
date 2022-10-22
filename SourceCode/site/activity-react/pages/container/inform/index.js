@@ -20,7 +20,8 @@ class InformItem extends React.PureComponent{
         'CREATE_CHECK_ITEM': '创建了检查项: ',
         'CHANGE_TASK_HEADER':'更改了任务: ',
         'CLOSE_TO_DDL':'有即将到截止日期的任务: ',
-        'CREATE_CHECK_ITEM': '创建了检查项: '
+        'CREATE_CHECK_ITEM': '创建了检查项: ',
+        'CREATE_SCHEDULE' : '创建了日程: '
     }
     changeReadState = async () => {
       
@@ -50,7 +51,7 @@ class InformItem extends React.PureComponent{
               if(this.props.type == 'EDIT_TOPIC')
               this.props.locationTo('/discuss/topic/' + this.props.topicId)
               if(this.props.type == 'EDIT_REPLY')
-              this.props.locationTo('/discuss/topic/' + this.props.topicId)
+              this.props.locationTo('/canlendar/' + this.props.topicId)
             })
 
     }
@@ -229,6 +230,7 @@ export default class Infs extends React.Component{
           'EDIT_REPLY': '编辑了回复: ',
           'CREATE_CHECK_ITEM': '创建了检查项: ',
           'CHANGE_TASK_HEADER':'更改了任务',
+          'CREATE_SCHEDULE' : '创建了日程: '
       }
      
       initIsreadList = async () => {

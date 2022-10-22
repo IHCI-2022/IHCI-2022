@@ -138,7 +138,7 @@ class TimelineItem extends React.PureComponent{
         headerName:""
     }
     deleteTask = ()=>{
-        window.toast("该任务以被删除")
+        window.toast("该任务已被删除")
     }
     render() {
         switch(this.props.type){
