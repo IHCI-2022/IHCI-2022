@@ -10,7 +10,7 @@ const newInformItemNum = 5
 const moreInformItemNum = 3
 
 class InformItem extends React.PureComponent{
-
+    
     typeMap = {
         'CREATE_TOPIC': '创建了讨论：',
         'REPLY_TOPIC': '回复了讨论：',
@@ -21,7 +21,8 @@ class InformItem extends React.PureComponent{
         'CHANGE_TASK_HEADER':'更改了任务: ',
         'CLOSE_TO_DDL':'有即将到截止日期的任务: ',
         'CREATE_CHECK_ITEM': '创建了检查项: ',
-        'CREATE_SCHEDULE' : '创建了日程: '
+        'CREATE_SCHEDULE' : '创建了日程: ',
+        'EDIT_SCHEDULE' : '编辑了日程: '
     }
     changeReadState = async () => {
       
@@ -51,7 +52,11 @@ class InformItem extends React.PureComponent{
               if(this.props.type == 'EDIT_TOPIC')
               this.props.locationTo('/discuss/topic/' + this.props.topicId)
               if(this.props.type == 'EDIT_REPLY')
-              this.props.locationTo('/canlendar/' + this.props.topicId)
+              this.props.locationTo('/discuss/topic/' + this.props.topicId)
+              
+              //TODO 跳转日历界面,直接跳转有登录问题
+              //   if(this.props.type == 'CREATE_SCHEDULE')
+              //   this.props.locationTo('/calendar/' + this.props.topicId)
             })
 
     }
