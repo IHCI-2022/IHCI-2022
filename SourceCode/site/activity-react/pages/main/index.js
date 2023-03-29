@@ -201,7 +201,7 @@ export default class MainPage extends React.Component {
             <div className="footer">
               <div className="trademark">
                 {/* <img className="logo" src={require('./logo@2x.png')} /> */}
-                <div className="trademark-text"><a href="http://www.beian.miit.gov.cn" target="_blank">粤ICP备15032454号-2</a></div>
+                <div className="trademark-text"><a href="https://beian.miit.gov.cn" target="_blank">粤ICP备15032454号-2</a></div>
                 <div className="trademark-footer">©️2009-至今 广州无象数码科技有限公司版权所有</div>
               </div>
               {
